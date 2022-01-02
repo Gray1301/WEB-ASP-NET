@@ -1,0 +1,40 @@
+﻿@model FinalProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/wwwroot/frontend/css/DangNhap.css" />
+<div class="navigation">
+    <ul>
+        <li><a href="~/wwwroot/frontend/layouts/TrangChu.html">Trang chủ</a></li>
+        <li><a href="~/wwwroot/frontend/layouts/DangNhap.html">> Đăng nhập </a></li>
+    </ul>
+</div>
+
+<div class="sign-up">
+    <div class="form-signup">
+        <h2 class="form-title">ĐĂNG NHẬP</h2>
+
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group text_input">
+                <label>Tên đăng nhập <strong class="red">(*)</strong> </label>
+                @Html.TextBoxFor(m => m.TenTK, "", new { @class = "form-control input", @placeholder = "Tên đăng nhập" })
+            </div>
+            <div class="form-group text_input">
+                <label>Mật khẩu <strong class="red">(*)</strong> </label>
+                @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control input", @placeholder = "Mật khẩu" })
+            </div>
+            <div class="form-group submit">
+                <input type="submit" name="submit" class="btn btn-primary" value="Đăng nhập" />
+            </div>
+        }
+    </div>
+</div>
+
+    <p>@ViewBag.error</p>
+
+

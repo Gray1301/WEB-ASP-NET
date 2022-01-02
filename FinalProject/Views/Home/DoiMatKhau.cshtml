@@ -1,0 +1,132 @@
+﻿@model FinalProject.Models.TaiKhoan
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/frontend/css/DoiMatKhau.css" />
+</head>
+<div class="navigation">
+    <ul>
+        <li><a href="~/wwwroot/frontend/layouts/TrangChu.html">Trang chủ</a></li>
+        <li><a href="~/wwwroot/frontend/layouts/DangKy.html">> Tài khoản </a></li>
+    </ul>
+</div>
+
+<div class="main-body row" style="border:0">
+    <!-- side bar -->
+    <div class="sidebar col-3">
+        <ul>
+            <li>
+                <i class="far fa-user"></i>
+                @Html.ActionLink("Chỉnh sửa thông tin tài khoản", "TaiKhoan", new { id = @Session["idUser"] })
+            </li>
+            <li class="current_clicked">
+                <i class="fas fa-unlock-alt"></i>
+                @Html.ActionLink("Đổi mật khẩu", "DoiMatKhau", new { id = @Session["idUser"] })
+            </li>
+        </ul>
+    </div>
+    <!-- main form -->
+    <div class="info col-9">
+
+        <h2 class="form-title">ĐỔI MẬT KHẨU</h2>
+        <span class="ruletext">
+            <strong class="red">(*)</strong> Thông tin bắt buộc
+        </span>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.TenTK)
+                @Html.HiddenFor(model => model.HoTen)
+                @Html.HiddenFor(model => model.TinhTrang)
+                @Html.HiddenFor(model => model.PhanQuyen)
+                @Html.HiddenFor(model => model.Tinh_ThanhPho)
+                @Html.HiddenFor(model => model.NgaySinh)
+                @Html.HiddenFor(model => model.SDT)
+                @Html.HiddenFor(model => model.Email)
+                @Html.HiddenFor(model => model.DiaChi)
+                @*<div class="form-group text_input">
+                        <label>Mật khẩu cũ <strong class="red">(*)</strong> </label>
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control input", @placeholder = "Mật khẩu" })
+                    </div>*@
+                <div class="text_input">
+                    <label>Nhập mật khẩu cũ<strong class="red">(*)</strong> </label>
+                    <input type="password"
+                           name="OldPassword"
+                           id="OldPassword"
+                           value=""
+                           placeholder="123456789"
+                           required="required"
+                           class="text" />
+                </div>
+
+
+
+                <div class="form-group text_input">
+
+                    <label>Mật khẩu mới<strong class="red">(*)</strong></label>
+                    <div>
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control text", @placeholder = "123456789", @id = "new_pass" } })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="text_input">
+                    <label>Nhập lại mật khẩu <strong class="red">(*)</strong> </label>
+                    <input type="password"
+                           name="re-password"
+                           id="again_pass"
+                           value=""
+                           placeholder="123456789"
+                           required="required"
+                           class="text" />
+                </div>
+
+
+                <div class="form-group text_input">
+                    <label>&nbsp;</label>
+                    <button type="submit" class="btn-update" id="btn-change-pass">
+                        <span>CẬP NHẬT</span>
+                    </button>
+                    <button type="reset" class="btn-reset">
+                        <span>HỦY BỎ</span>
+                    </button>
+                </div>
+            </div>
+        }
+
+    </div>
+    @if (ViewBag.error != null)
+    {
+        <br />
+        <p class="alert alert-danger">@ViewBag.error</p>
+    }
+</div>
+
+
+
+<script>
+function validate() {
+            var mk1 = document.getElementById('MatKhau');
+            var mk2 = document.getElementById('re-password');
+            if (mk1 != mk2) {
+
+                return false
+                }
+            return true;
+        }
+</script>
+
+@section Scripts{
+    <script src="~/wwwroot/frontend/js/change_password.js"></script>
+}
+
+

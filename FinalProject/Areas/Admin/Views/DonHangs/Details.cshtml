@@ -1,0 +1,54 @@
+﻿@model FinalProject.Models.DonHang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top: 50px; margin-left: 100px;">
+    <h1><i class="fas fa-plus-circle"></i>Xem đơn hàng</h1>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDH)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDH)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GioHang.TenTK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioHang.TenTK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiNhan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiNhan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrang)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

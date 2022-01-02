@@ -1,0 +1,136 @@
+﻿@model FinalProject.Models.SanPham
+<head>
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/frontend/css/ChiTietSP.css" />
+</head>
+
+<div class="body container">
+    @*<div class="navigation">
+        <ul>
+            <li><a href="../layouts/TrangChu.html">Trang chủ</a></li>
+            <li><a href="../layouts/ChiTietSP.html">> Tivi </a></li>
+        </ul>
+    </div>*@
+
+    <div class="card-wrapper">
+        <div class="card">
+            <!-- card left -->
+            <div class="products-imgs">
+                <div class="img-display">
+                    @{
+                        string ImagePath = "~/wwwroot/frontend/images/" + Model.Anh;
+                        <div class="img-showcase">
+                            <img src="@Url.Content(ImagePath)" alt="tivi1" />
+                            <img src="@Url.Content(ImagePath)" alt="tivi1" />
+                            <img src="@Url.Content(ImagePath)" alt="tivi1" />
+                            <img src="@Url.Content(ImagePath)" alt="tivi1" />
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+            <!-- card right -->
+            <div class="product-content">
+                <h2 class="product-title">
+                    @Html.DisplayFor(Model => Model.TenSP)
+                </h2>
+                <p style="color:dodgerblue">
+                    Thương hiệu: <a href="#" class="product-brand"> @Html.DisplayFor(Model => Model.ThuongHieu)</a>
+                    &nbsp;
+
+                </p>
+
+                <div class="product-price">
+
+                    <p class="new-price">Giá bán:  @Html.DisplayFor(Model => Model.Gia)   VNĐ</p>
+                </div>
+                <div class="purchase-info">
+                    <div class="state">
+                        @if (Model.SoLuongCon == 0)
+                        {
+                            <strong> Tình trạng : Hết hàng</strong>
+                        }
+                        else if (Model.SoLuongCon <= 5)
+                        {
+                            <strong> Tình trạng : Sắp hết hàng</strong>
+                        }
+                        else
+                        {
+                            <strong> Tình trạng : Còn hàng</strong>
+                        }
+                    </div>
+
+                    <div class="amount">
+                        <strong>Số lượng: </strong><input type="number" min="0" value="1" />
+                    </div>
+
+                    @if (Model.SoLuongCon == 0)
+                    {
+
+                        <button type="button" class="btn" onclick="het()">
+                            <a href="#">Thêm vào giỏ hàng</a>
+                            <i class="fas fa-cart-plus"></i>
+                        </button>
+                        <button type="button" class="btn" onclick="het()">
+                            <a href="#">Mua hàng</a>
+                        </button>
+                        <p id="het"></p>
+                        <script>
+                            function het() {
+                                document.getElementById("het").innerHTML = "Sản phẩm đã hết bạn không thể mua";
+
+                            }
+                        </script>
+                    }
+                    else
+                    {
+                <button type="button" class="btn">
+                    @if (Session["idUser"] == null){
+                        Session["trave"] = "chitietsp";
+                        Session["machitiet"]=Model.MaSP;
+                        <a href="@Url.Action("Login", "Home", new { MaSP = Model.MaSP })">Thêm vào giỏ hàng</a>
+                        <i class="fas fa-cart-plus"></i>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("GioHang", "Home", new { MaSP = Model.MaSP })">Thêm vào giỏ hàng</a>
+                        <i class="fas fa-cart-plus"></i>
+                    }
+                </button>
+                <button type="button" class="btn">
+                    @*<a href="@Url.Action("DonHang", "Home", new { MaSP = Model.MaSP })">Mua hàng</a>*@
+                    @if (Session["idUser"] == null)
+                    {
+                        Session["trave"] = "chitietsp";
+                        Session["machitiet"] = Model.MaSP;
+                        <a href="@Url.Action("Login", "Home", new { MaSP = Model.MaSP })">Mua hàng</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("GioHang", "Home", new { MaSP = Model.MaSP })">Mua hàng</a>
+                    }
+                </button>}
+
+
+
+                    <img src="~/wwwroot/frontend/images/Capture3.PNG" alt="Alternate Text" />
+                    <img src="~/wwwroot/frontend/images/Capture.PNG" alt="Alternate Text" />
+                    <img src="~/wwwroot/frontend/images/Capture4.PNG" alt="Alternate Text" />
+                    <img src="~/wwwroot/frontend/images/Capture1.PNG" alt="Alternate Text" />
+                </div>
+            </div>
+        </div>
+        <div class="product-detail">
+            <h2>Chi tiết sản phẩm</h2>
+            <ul>
+                <li><i class="far fa-check-circle"></i>@Html.DisplayFor(Model => Model.MoTa)</li>
+                <li><i class="far fa-check-circle"></i> Sản xuất tại: <span>Đông Ti Mo</span></li>
+                <li><i class="far fa-check-circle"></i> Bảo hành: <span>24 Tháng</span></li>
+                <li><i class="far fa-check-circle"></i> Chất lượng: <span>Đã quan kiểm định của Hoa Kỳ</span></li>
+            </ul>
+            </p>
+        </div>
+    </div>
+
+</div>

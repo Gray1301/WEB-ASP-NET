@@ -1,0 +1,93 @@
+﻿@model FinalProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin tài khoản</h2>
+<div style="margin-left: 20px">
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            @*<dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>*@
+
+            @*<dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SDT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tinh_ThanhPho)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tinh_ThanhPho)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhanQuyen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhanQuyen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrang)
+            </dd>
+
+        </dl>
+        <p>
+            <a href="@Url.Action("Edit", new { id = Model.TenTK })" style="text-decoration: none ;font-size: 16px; text-align: center"><i class="fas fa-edit"></i> Chỉnh sửa</a> |
+            <a href="@Url.Action("Index")" style="text-decoration: none ;color:royalblue; text-align: center"><i class="fas fa-undo"></i> Quay lại </a>
+            </p>
+    </div>
+    
+</div>

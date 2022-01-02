@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "KhongGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="khongco">
+    <h1 class="infomationcustomer"> Bạn chưa có sản phẩm nào </h1>
+    <a class="btn_payonline btn_payment" href="@Url.Action("Index", "Home")">Mua sắm</a>
+</div>
+<style>
+    .khongco{
+        text-align: center;
+    }
+    .btn_payonline {
+        border: 0;
+        color: #fff;
+        font-size: 16px;
+        font-family: avantdemi,Arial,Tahoma,sans-serif;
+        font-weight: 700;
+    }
+    .btn_payment {
+        background: #0054a6;
+        display: inline-block;
+        text-align: center;
+        border-radius: 3px;
+        line-height: 20px;
+        cursor: pointer;
+        padding: 10px 9%;
+        margin-bottom: 10px;
+        position: relative;
+    }
+</style>
+

@@ -1,0 +1,277 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #c5c5c570;
+	font-family:  "Arial";
+}
+
+.main{
+	display: flex;
+	min-height: 100vh;
+}
+
+.sidebar{
+	width: 320px;
+	position: fixed;
+	height: auto;
+	overflow: auto;
+}
+
+.content{
+	width: 100%;
+	margin-left: 320px;
+	min-height: 100vh;
+}
+
+.sidebar .logo{
+	padding: 20px 15px;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #ffffff;
+	color: white;
+}
+
+.sidebar .menu_sidebar{
+	background-color: #272e38;
+	height: calc(100vh - 61px);
+}
+nav {
+	position: relative;
+	margin: 0px;
+	width: 360px;
+    background-color: #272e38;
+}
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background-color: #272e38;
+}
+nav ul li {
+  margin-top: 10px; 
+}
+nav ul li a {
+	display: block;
+	padding: 10px 15px;
+	color: #fff;
+	text-decoration: none;
+	-webkit-transition: 0.2s linear;
+	-moz-transition: 0.2s linear;
+	-ms-transition: 0.2s linear;
+	-o-transition: 0.2s linear;
+	transition: 0.2s linear;
+}
+nav ul li a:hover {
+	background: #1d4f71;
+	color: #fff;
+}
+nav ul li a .fa {
+	width: 16px;
+	text-align: center;
+	margin-right: 5px;
+	float:right;
+}
+nav ul ul {
+	background: rgba(0, 0, 0, 0.2);
+}
+nav ul li ul li a {
+	
+	border-left: 4px solid transparent;
+	padding: 10px 20px;
+}
+nav ul li ul li a:hover {
+
+	border-left: 4px solid #3498db;
+}
+
+.content .header{
+	display: block;
+	height: 61px;
+	box-shadow: 0 2px #545050;
+}
+
+.content .header .form_search{
+	float: left;
+	margin-left: 25px;
+	margin-top: 13px;
+	position: relative;
+}
+
+.content .header .form_search input{
+	width: 250px;
+	height: 30px;
+	padding-right: 38px;
+}
+
+.content .header .form_search input:focus{
+	outline: unset;
+}
+
+.content .header .form_search button{
+	position: absolute;
+	right: 1px;
+	font-size: 18px;
+    background-color: white;
+    border: unset;
+    padding: 0px 10px;
+    top: 1px;
+}
+
+.content .header .form_search button:focus{
+	outline: unset;
+}
+
+.content .header .account_manage{
+	float: right;
+	margin-right: 25px;
+}
+
+.btn_account{
+	font-size: 14px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 8px;
+	padding: 5px;
+	border: unset;
+	position: relative;
+}
+
+.btn_account:focus {
+	outline: unset;
+}
+
+.btn_account img{
+	width: 28px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+.btn_account i{
+	font-size: 20px;
+	margin-left: 5px;
+}
+
+.btn_account .sub_menu{
+	position: absolute;
+	top: 40px;
+	background-color: white;
+	width: 200px;
+	right: 0;
+	z-index: 1;
+	border: 1px solid #cccccc;
+	padding: 0 15px;
+}
+
+.btn_account .sub_menu ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.btn_account .sub_menu ul li a{
+	display: block;
+	padding: 15px 0;
+	text-decoration: none;
+	color: #000000;
+	font-size: 14px;
+	border-bottom: 1px solid #ccc;
+}
+
+.btn_account .sub_menu ul li:last-child a{
+	border-bottom: 0;
+}
+
+.btn_account .sub_menu ul li a i{
+	font-size: 14px;
+	color: #272e36d9;
+	float: right;
+}
+
+.container{
+	padding: 25px;
+}
+
+chart-sp{
+    display: flex;
+}
+.chart-sp .chart{
+    width: 60%;
+}
+.chart-sp .chart>div{
+    font-size: 25px;
+    color: black;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+.chart-sp .sp{
+    width: 90%;
+    margin-left: 30px;;
+}
+.cl{
+    clear: both;
+}
+.sp-menu{
+    margin-top: 30px;
+    background-color: #181a1b;
+    height: auto;
+}
+.sp-menu p{
+    color: #c9c4bc;
+    font-size: 20px;
+    padding: 20px 0 0 20px;
+}
+.sp-menu p span{
+    font-weight: bold;
+}
+.sp-menu ul{
+    list-style-type: none;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+.sp-menu ul li{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+}
+.sp-menu ul li:first-child{
+    border-top:unset
+}
+.sp-menu ul li p{
+    padding: 20px 30px;
+}
+.option_table{
+	background-color: white;
+    color: #131111;
+    width: 90%;
+    margin: 15px 11px;
+}
+.table{
+	width: 100%;
+	border: 2px solid white;
+	padding: 14px;
+}
+h1{
+	padding-left: 10px;
+}
+.Last{
+	font-size: 25px;
+}
+.tab{
+	font-family: Arial;
+	font-size: 20px;
+}
+.footer_content_copyright{
+	margin-top: 0px;
+    background-color: black;
+    color: white;
+    height: 40px;
+}
+.footer_content_copyright p{
+	margin-left: 950px;
+    color: white;
+    padding: 10px 0px;
+}

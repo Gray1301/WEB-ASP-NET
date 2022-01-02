@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<FinalProject.Models.SanPham>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/wwwroot/frontend/css/PagedList.css" rel="stylesheet" type="text/css" />
+</head>
+<h1><i class="fas fa-plus-circle"></i>Quản lý sản phẩm</h1>
+<p>
+    <a href="@Url.Action("Create")" style="text-decoration: none; font-size: 18px; color:black; margin-left: 20px;"><i class="far fa-plus-square"></i> Thêm mới</a>
+</p>
+<table class="table" style="border-color: black; margin-left: 10px ">
+    <tr style="color:black">
+
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+           Ảnh
+        </th>
+        <th>
+            Thương hiệu
+        </th>
+
+        <th>
+            Giá
+        </th>
+
+        <th>
+            Số lượng còn
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @{
+                    string ImagePath = "~/Areas/Admin/assets/imgnew/" + item.Anh;
+                }
+                <img src="@Url.Content(ImagePath)" width="200" height="200" class="img-thumbnail" />
+                <br />
+                @Html.DisplayFor(modelItem => item.Anh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThuongHieu)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongCon)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.MaSP })" style="text-decoration: none ;color: orange; text-align: center"><i class="fas fa-edit"></i> |</a>
+                <a href="@Url.Action("Details", new { id = item.MaSP })" style="text-decoration: none; color: orange; text-align: center"><i class="fas fa-list"></i> |</a>
+                <a href="@Url.Action("Delete", new { id = item.MaSP })" style="text-decoration: none;color: orange"><i class="fas fa-trash"></i> </a>
+            </td>
+        </tr>
+    }
+
+</table>
+<div style="float:right">
+
+    Trang @(Model.PageCount<Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

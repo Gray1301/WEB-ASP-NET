@@ -1,0 +1,53 @@
+﻿@model PagedList.IPagedList<FinalProject.Models.DanhMucSP>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link href="~/wwwroot/frontend/css/PagedList.css" rel="stylesheet" type="text/css" />
+</head>
+<h1><i class="fas fa-plus-circle"></i>Quản lý danh mục</h1>
+
+<p>
+    <a href="@Url.Action("Create")" style="text-decoration: none; font-size: 18px; color:black; margin-left: 30px;"><i class="far fa-plus-square"></i> Thêm mới</a>
+</p>
+<table class="table table-hover" style="margin: 50px 0px; border: 3px solid black">
+    <thead style="color: black;text-align: center">
+        <tr>
+            <th scope="col">
+                Mã danh mục
+            </th>
+            <th scope="col">
+                Tên danh mục
+            </th>
+            <th scope="col">Chức năng</th>
+        </tr>
+    </thead>
+
+    <tbody style=" text-align: center">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDM)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.MaDM })" style="text-decoration: none ;color: orange; text-align: center"><i class="fas fa-edit"></i> |</a>
+                    <a href="@Url.Action("Details", new { id = item.MaDM })" style="text-decoration: none; color: orange; text-align: center"><i class="fas fa-list"></i> |</a>
+                    <a href="@Url.Action("Delete", new { id = item.MaDM })" style="text-decoration: none;color: orange"><i class="fas fa-trash"></i> </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div style="float:right">
+
+    Trang @(Model.PageCount<Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
+

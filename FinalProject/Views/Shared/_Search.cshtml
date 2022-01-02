@@ -1,0 +1,7 @@
+﻿<form>
+    @using (Html.BeginForm())
+    {
+        @Html.TextBox("searchString", "", htmlAttributes: new { @class = "input", @placeholder = "Tìm kiếm sản phẩm", @style = "color: black" });
+        <button class="search-btn">Tìm kiếm</button>
+    }
+</form>

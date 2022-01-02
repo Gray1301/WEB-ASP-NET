@@ -1,0 +1,116 @@
+﻿@model FinalProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/frontend/css/DangKy.css" />
+</head>
+
+
+<div class="navigation">
+    <ul>
+        <li><a href="~/wwwroot/frontend/layouts/TrangChu.html">Trang chủ</a></li>
+        <li><a href="~/wwwroot/frontend/layouts/DangKy.html">> Đăng ký </a></li>
+    </ul>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="sign-up">
+        <form class="form-signup">
+            <h2 class="form-title">ĐĂNG KÝ TÀI KHOẢN</h2>
+            <div class="ruletext">
+                <strong class="red">(*)</strong> Thông tin bắt buộc
+            </div>
+            <div class="form-horizontal">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group text_input">
+                    <label>Tên đăng nhập <strong class="red">(*)</strong> </label>
+                    <div>
+                        @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control text", @placeholder = "Abcxyz" } })
+                        @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger valid-msg", @style = "margin-left: 250px" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Mật khẩu <strong class="red">(*)</strong> </label>
+                    <div>
+                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control text", @placeholder = "123456789" } })
+                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger valid-msg", @style = "margin-left: 250px" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Email <strong class="red">(*)</strong> </label>
+                    <div>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "abc@gmail.com" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Họ tên <strong class="red">(*)</strong> </label>
+                    <div>
+                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nguyễn Văn A" } })
+                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Số điện thoại <strong class="red">(*)</strong> </label>
+                    <div>
+                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", @placeholder = "9999999999" } })
+                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Ngày sinh </label>
+                    <div>
+                        @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control", @placeholder = "15/10/1999" } })
+                        @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Tỉnh/Thành phố <strong class="red">(*)</strong></label>
+                    <div>
+                        @*@Html.EditorFor(model => model.Tinh_ThanhPho, new { htmlAttributes = new { @class = "form-control", @placeholder = "TP.Hồ Chí Minh" } })*@
+                        @Html.DropDownListFor(model => model.Tinh_ThanhPho, new SelectList(ViewBag.tinhs),"- Tỉnh/Thành phố -",
+                        htmlAttributes: new { @class = "form-control drop", @style = "display:inline;width:583px;margin-left:15px" })
+                        @Html.ValidationMessageFor(model => model.Tinh_ThanhPho, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <label>Địa chỉ <strong class="red">(*)</strong></label>
+                    <div>
+                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @placeholder = "167, Nguyễn Văn Cừ, Phường 5, Quận 5" } })
+                        @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger valid-msg" })
+                    </div>
+                </div>
+
+                <div class="form-group text_input">
+                    <div class="btn-submit">
+                        <input type="submit" value="Đăng ký" class="btn btn-signup" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+}
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

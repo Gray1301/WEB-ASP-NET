@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FinalProject.Models.GioHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1><i class="fas fa-plus-circle"></i>Quản lý giỏ hàng</h1>
+
+<table class="table table-hover" style="margin: 50px 0px; border: 3px solid black">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioHang.TenTK)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiNhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioHang.TenTK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiNhan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            @if (item.TinhTrang == "Đã hủy" || item.TinhTrang == "Đã giao")
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    <a href="@Url.Action("Edit",new { id = item.MaDH })" style="text-decoration: none ;color: orange; text-align: center"><i class="fas fa-edit"></i></a>
+
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>

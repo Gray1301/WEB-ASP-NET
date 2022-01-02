@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FinalProject.Models.SanPham>
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="~/wwwroot/frontend/css/TimKiem.css" />
+</head>
+<!-- main product list -->
+<div class="product-list">
+    <div class="list-result">
+        Tìm thấy <strong>@Session["soluongtimkiem"]</strong> kết quả phù hợp với từ khóa <strong>"@Session["searchString"]"</strong>:
+    </div>
+    <ul style="padding-top: 5px;">
+        @foreach (var item in Model)
+        {
+            <li style=" margin: 5px 5px; width: 30%;">
+                <div class="card" style="align-content:center;height:650px;position:relative">
+                    @{
+                        string ImagePath = "~/wwwroot/frontend/images/" + item.Anh;
+                    }
+                    <img src="@Url.Content(ImagePath)" alt="" />
+                    <div class="card-body">
+                        <p class="card-text">
+                            @Html.DisplayFor(modelItem => item.TenSP)
+                        </p>
+                        <p>
+                            Giá hãng: <span class="old-price">@Html.DisplayFor(modelItem => item.GiaHang)đ </span><br /><span class="new-price">Giá bán: @Html.DisplayFor(modelItem => item.Gia)đ</span>
+                        </p>
+                        <a href="@Url.Action("ChiTietSP","Home", new { id = item.MaSP })" class="btn btn-primary" style="position:absolute;left:15px;bottom:15px">Xem Ngay</a>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    
+</div>
+
+

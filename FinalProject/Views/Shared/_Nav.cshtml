@@ -1,0 +1,32 @@
+﻿@model IEnumerable<FinalProject.Models.DanhMucSP>
+
+<div class="nav">
+    <ul>
+        <li class="@(ViewContext.ParentActionViewContext.RouteData.Values["Action"].ToString() == "Index" && ViewContext.ParentActionViewContext.RouteData.Values["id"] == null ? "active" : "")">
+            <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+        </li>
+        <li class="dropdown-arrow">
+            <a href="@(ViewContext.ParentActionViewContext.RouteData.Values["Action"].ToString() == "SanPham" ? "active" : "")">
+                <i class="fas fa-align-justify"></i> Danh Mục
+            </a>
+            <ul class="sub-menus">
+                @foreach (var item in Model)
+                {
+                    <li style="width:200px">
+                        <a href="@Url.Action("SanPhamTheoDM","Home",new { id=item.MaDM})">
+                            @Html.DisplayFor(modelItem => item.TenDM)
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </li>
+        <li>
+            <a href="@Url.Action("GioHang", "Home")"><i class="fas fa-shopping-cart"></i> Giỏ Hàng</a>
+        </li>
+        <li>
+            <a href="@Url.Action("TaiKhoan", "Home", new {id = Session["idUser"]})"><i class="fas fa-user"></i> Tài Khoản</a>
+        </li>
+    </ul>
+</div>
+

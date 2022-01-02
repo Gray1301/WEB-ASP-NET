@@ -1,0 +1,107 @@
+﻿@model FinalProject.Models.TaiKhoan
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Đăng Nhập</title>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/font-awesome.min.css.css" />
+
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/style.css" />
+
+    <style>
+        .signin-form {
+            margin-top: 50px;
+        }
+
+            .signin-form .form-group {
+                margin-bottom: 35px !important;
+            }
+
+        body .signin-form .form-group label {
+            text-transform: none !important;
+            font-size: 16px !important;
+            color: gray !important;
+        }
+
+        body {
+            font-family: Arial !important;
+        }
+    </style>
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7 col-lg-5">
+                    <div class="wrap">
+                        <div class="login-wrap p-4 p-md-5">
+                            <div class="w-200">
+                                <h3 class="mb-4 title"
+                                    style="
+                      font-family: Arial;
+                      text-align: center;
+                      font-weight: 700;
+                      color: cornflowerblue;
+                      margin-top: 30px;
+                    ">
+                                    ĐĂNG NHẬP
+                                </h3>
+                            </div>
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                <form action="#" class="signin-form">
+
+                                    @Html.AntiForgeryToken()
+                                    <div class="form-group text_input">
+                                        <label>Tên đăng nhập <strong class="red">(*)</strong> </label>
+                                        @Html.TextBoxFor(m => m.TenTK, "", new { @class = "form-control", @placeholder = "Tên đăng nhập" })
+                                    </div>
+                                    <div class="form-group text_input">
+                                        <label>Mật khẩu <strong class="red">(*)</strong> </label>
+                                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control input", @placeholder = "Mật khẩu" })
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="submit" class="form-control btn btn-primary rounded submit px-3" value="Đăng nhập" />
+                                    </div>
+
+                                    <p>@ViewBag.error</p>
+                                    <div class="form-group d-md-flex">
+                                        <div class="w-50 text-left">
+                                            <div class="form-check">
+                                                <input class="form-check-input"
+                                                       style="margin-top: 7px"
+                                                       type="checkbox"
+                                                       value=""
+                                                       id="flexCheckChecked"
+                                                       checked />
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Lưu mật khẩu
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="w-50 text-md-right">
+                                            <a href="#">Quên mật khẩu</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Areas/Admin/assets//js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/assets//js/popper.js"></script>
+    <script src="~/Areas/Admin/assets//js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/assets//js/main.js"></script>
+
+</body>
+</html>

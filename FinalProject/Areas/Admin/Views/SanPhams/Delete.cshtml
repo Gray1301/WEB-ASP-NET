@@ -1,0 +1,97 @@
+﻿@model FinalProject.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="margin-left:10px">Bạn có chắc chắn xóa sản phẩm?</h3>
+<div>
+    <dl class="dl-horizontal" style="margin-left:10px">
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMucSP.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMucSP.TenDM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anh)
+        </dt>
+
+        <dd>
+            @{
+                string ImagePath = "~/Areas/Admin/assets/imgnew/" + Model.Anh;
+            }
+            <img src="@Url.Content(ImagePath)" width="200" height="200" class="img-thumbnail" />
+            <br />
+            @Html.DisplayFor(model => model.Anh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThuongHieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThuongHieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GiaHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GiaHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoTa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoLuongCon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoLuongCon)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" style="margin-left:5px" /> |
+            @*@Html.ActionLink("Hủy", "Index",new { @class="btn btn-primary"})*@
+        <a href="@Url.Action("Index","SanPhams")" class="btn btn-primary">Hủy</a>
+        </div>
+    }
+</div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

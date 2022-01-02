@@ -1,0 +1,105 @@
+﻿@model FinalProject.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-left: 20px">
+    <h2>Xóa tài khoản</h2>
+
+    <h3>Bạn chắc chắn muốn xóa tài khoản này ?</h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HoTen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SDT)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NgaySinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NgaySinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tinh_ThanhPho)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tinh_ThanhPho)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhanQuyen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhanQuyen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrang)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                <a href="@Url.Action("Index","TaiKhoans")" class="btn btn-primary">Hủy</a>
+            </div>
+        }
+    </div>
+</div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

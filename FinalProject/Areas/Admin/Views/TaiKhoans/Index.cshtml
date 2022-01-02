@@ -1,0 +1,104 @@
+﻿@model PagedList.IPagedList<FinalProject.Models.TaiKhoan>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/wwwroot/frontend/css/PagedList.css" rel="stylesheet" type="text/css" />
+</head>
+<h1><i class="fas fa-plus-circle"></i>Quản lý tài khoản</h1>
+<table class="table table-hover" style="margin: 50px 0px; border: 3px solid black; margin-left: 10px ">
+    <thead style="color: black">
+        <tr>
+            <th>
+                Tên tài khoản
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>*@
+            <th>
+                Họ và tên
+            </th>
+            <th>
+                Email
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.SDT)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.NgaySinh)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Tinh_ThanhPho)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DiaChi)
+                </th>*@
+            <th>
+                Phân quyền
+            </th>
+            <th>
+                Tình trạng
+            </th>
+            <th scope="col">Chức năng</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        if (item.PhanQuyen != "Người quản trị")
+        {
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayFor(modelItem => item.TenTK)
+                    </b>
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.MatKhau)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.SDT)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.NgaySinh)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Tinh_ThanhPho)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhanQuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrang)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.TenTK })" style="text-decoration: none ;color: orange; text-align: center"><i class="fas fa-edit"></i> |</a>
+                    <a href="@Url.Action("Details", new { id = item.TenTK })" style="text-decoration: none; color: orange; text-align: center"><i class="fas fa-list"></i> |</a>
+                    <a href="@Url.Action("Delete", new { id = item.TenTK })" style="text-decoration: none;color: orange"><i class="fas fa-trash"></i> </a>
+
+                </td>
+
+            </tr>
+        }
+    }
+
+</table>
+<script>
+
+</script>
+<div style="float:right">
+
+    Trang @(Model.PageCount<Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

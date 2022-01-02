@@ -1,0 +1,25 @@
+﻿@model FinalProject.Models.DanhMucSP
+
+@{
+    ViewBag.Title = "Chi tiết danh mục";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 5px">@ViewBag.Title</h2>
+
+<div style="margin-left: 20px">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDM)
+        </dd>
+
+    </dl>
+
+    <p>
+        <a href="@Url.Action("Edit", new { id = Model.MaDM })" style="text-decoration: none ;font-size: 16px; text-align: center"><i class="fas fa-edit"></i> Chỉnh sửa</a> | 
+        <a href="@Url.Action("Index")" style="text-decoration: none ;color:royalblue; text-align: center"><i class="fas fa-undo"></i> Quay lại </a>
+</div>

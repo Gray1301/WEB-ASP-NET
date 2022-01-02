@@ -1,0 +1,70 @@
+﻿@model PagedList.IPagedList<FinalProject.Models.DonHang>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="~/wwwroot/frontend/css/PagedList.css" rel="stylesheet" type="text/css" />
+</head>
+<h1><i class="fas fa-plus-circle"></i>Quản lý đơn hàng</h1>
+
+<table class="table table-hover" style="margin: 50px 0px; border: 3px solid black">
+    <tr>
+        <th>
+            Mã đơn hàng
+        </th>
+        <th>
+            Tên tài khoản
+        </th>
+        <th>
+            Ngày đặt
+        </th>
+        <th>
+            Dịa chỉ nhận
+        </th>
+        <th>
+            Tình trạng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioHang.TenTK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiNhan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            @if (item.TinhTrang == "Đã hủy" || item.TinhTrang == "Đã giao")
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    <a href="@Url.Action("Edit",new { id = item.MaDH })" style="text-decoration: none ;color: orange; text-align: center"><i class="fas fa-edit"></i></a>
+
+                </td>
+            }
+
+        </tr>
+    }
+
+</table>
+<div style="float:right">
+
+    Trang @(Model.PageCount<Model.PageNumber ? 0:Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>
